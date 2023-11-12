@@ -34,5 +34,5 @@
 .button {
   background-color: transparent;
   cursor: pointer;
-  color: var(--color-text);
+  color: var(--color-trash);
 }
