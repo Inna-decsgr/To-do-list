@@ -35,7 +35,7 @@ export default function Todo({todo, onUpdate, onEdit, onDelete}) {
   }
   const list = useRef(null);
   const scrollToBottom = () => {
-    list.current ?.scrollIntoView({behavior:'smooth'})
+    list.current.scrollIntoView({behavior:'smooth'})
   }
   useEffect(() => {
     scrollToBottom()
