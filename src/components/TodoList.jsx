@@ -17,6 +17,11 @@ export default function TodoList({filter}) {
   const handleDelete = (deleted) => {
     setTodos(todos.filter((t) => t.id !== deleted.id))
   }
+  const handleEdit = (edited) => {
+    if(edited) {
+      setTodos(todos.map((t) => t.id === edited.id ? edited : t))
+    }
+  }
 
   useEffect(()=> {
     localStorage.setItem('todos', JSON.stringify(todos))
@@ -31,6 +36,7 @@ export default function TodoList({filter}) {
               key={item.id}
               todo={item}
               onUpdate={handleUpdate}
+              onEdit={handleEdit}
               onDelete={handleDelete}
             />
           )
