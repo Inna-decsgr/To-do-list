@@ -11,9 +11,9 @@ export default function Todo({todo, onUpdate, onDelete}) {
     })
   }
   const handleDelete = () => onDelete(todo);
-  
+
   return (
-    <li className={styles.todo}>
+    <li className={`${styles.todo} ${status === 'completed' && styles.done}`}>
       <input 
         id={id}
         className={styles.checkbox}
