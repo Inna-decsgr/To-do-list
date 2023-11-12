@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Header.module.css'
 import { useDarkMode } from '../context/DarkModeContext';
-import { BiSolidMoon } from "react-icons/bi";
+import { BiSolidMoon } from 'react-icons/bi';
 import { BsFillEmojiSunglassesFill } from "react-icons/bs";
 
 export default function Header({filters, filter, onFilterChange}) {
