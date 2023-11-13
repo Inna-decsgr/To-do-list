@@ -35,6 +35,10 @@
    - todos를 받아온 후에는 JSON.parse로 배열로 변환한 후 반환했다
 * 삭제 버튼과 함께 수정 버튼도 함께 구현하고 싶었다
   - useState로 edit의 초기값을 false로해서 처음에는 안보이게 했다가 삼항연산자를 써서 edit가 true가 되면 각각 다른 form을 반환하도록 했다
+* todo를 많이 추가해서 스크롤이 생기게 되면 새로 추가한 todo에 맞게 scroll이 맨 밑으로 내려가야하는데 내려가지 않았다
+  - React에서는 특정 DOM요소에 접근할 수 없는 대신에 useRef를 사용하면 된다
+  - useRef hook을 사용해서 list 변수를 선언하고 선택하고자 하는 DOM요소인 li에 선언해준 list를 ref와 함께 속성으로 추가했다
+  - scrollToBottom 함수를 만들고 함수 내에서 li.current.scrollIntoView로 새로 추가된 todo를 따라 scroll이 이동하도록 구현했다
 
 
 #### 배포 링크
