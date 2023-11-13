@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# React To do list✍
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### 프로젝트 이름
+간단한 투두리스트
 
-## Available Scripts
+#### 사용 언어
+<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/> <img src="https://img.shields.io/badge/PostCSS-DD3A0A?style=flat-square&logo=React&logoColor=white"/>
 
-In the project directory, you can run:
+#### 구현 사항
+* 새로운 todo 추가
+* todo 삭제
+* todo 수정
+* 완료된 todo는 줄 긋기
+* Filter로 todo 상태 구분해서 분류하기
+* DarkMode로 두 가지 테마(🌜,🌞) 중 선택해서 적용
+* 새로고침해도 이전 todo 기록 기억하기
 
-### `yarn start`
+#### 주요 내용
+* `useState`으로 입력받은 todo를 id와 status와 함께 배열로 추가
+* `useEffect`으로 처음 어플리케이션을 켰을 때 한번만 실행되거나 특정 요소가 변경될 때마다 동작해야할 기능 구현
+  - isDark 변수로 현재 darkMode인지 아닌지를 판단하여 그에 맞는 테마를 적용해서 화면에 보여준다
+  - todos가 변경될때마다 localStorage에 저장된 새로운 todos를 받아와서 화면에 보여준다
+*  todos에 변화가 있다면 todos를 JSON으로 변경한 다음 `localStorage.setItem`으로 localStorage에 저장 후
+*  `localStorage.getItem`으로 localStorage로부터 변경된 todos를 받아온 후 다시 배열로 바꿔서 반환한다
+*  이전 todo들이 localStorage에 저장되어있기 때문에 새로 고침하거나 어플리케이션을 껐다가 켜도 todo 기록이 남는다
+*  Context를 생성하여 DarkMode 구현. 효과가 적용될 Header와 TodoList를 Provider로 감싸서 darkMode와 toggleDarkMode를 전달
+*  Filter 버튼을 클릭하면 현재 status를 filter에 저장하고 todos 중 filter와 같은 status를 가진 todos만 filter해서 새로운 배열로 반환
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### 문제 해결
+* Provider로 감싸고 자식 요소들이 써야하는 darkMode와 toggleDarkMode를 전달해주지 않아 Header에서 변수와 함수를 쓸 수 없었다
+  - Provider에 value로 darkMode와 toggleDarkMode를 전달해주었다.
+* localStorage에 todos가 저장되지가 않았다
+   - todos는 배열인데 localStorage에는 문자열 데이터밖에 저장할 수 없기 때문에 todos가 저장되지 않았던 것
+   - JSON.stringify로 todos를 JSON 파일로 변환하여 localStorage에 저장하고
+   - todos를 받아온 후에는 JSON.parse로 배열로 변환한 후 반환했다
+* 삭제 버튼과 함께 수정 버튼도 함께 구현하고 싶었다
+  - useState로 edit의 초기값을 false로해서 처음에는 안보이게 했다가 삼항연산자를 써서 edit가 true가 되면 각각 다른 form을 반환하도록 했다
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `yarn test`
+#### 배포 링크
+https://sensational-nougat-9605dc.netlify.app
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
