@@ -41,6 +41,6 @@
   - scrollToBottom 함수를 만들고 함수 내에서 li.current.scrollIntoView로 새로 추가된 todo를 따라 scroll이 이동하도록 구현했다
 
 
-#### 배포 링크
+#### 배포 링크 📌
 https://sensational-nougat-9605dc.netlify.app
 
